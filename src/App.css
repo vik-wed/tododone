@@ -14,6 +14,19 @@
   color: #aaaaff;
 }
 
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 20%;
+  font-size: 1rem;
+}
+
+input {
+  border: 1px solid grey;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
 .add-variant {
   color: white;
   background-color: #0287ed;
@@ -22,4 +35,8 @@
 .delete-variant {
   color: black;
   background-color: #f55be4;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
