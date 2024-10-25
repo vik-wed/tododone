@@ -3,10 +3,23 @@
 }
 
 .App-header {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1.5rem;
+}
+
+.title {
+  color: #aaaaff;
+}
+
+.add-variant {
+  color: white;
+  background-color: #0287ed;
+}
+
+.delete-variant {
+  color: black;
+  background-color: #f55be4;
 }
