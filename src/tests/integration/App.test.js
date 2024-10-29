@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, within } from "@testing-library/react";
-import App from "../../../App";
+import App from "../../App";
 
 beforeEach(() => {
   localStorage.clear();
