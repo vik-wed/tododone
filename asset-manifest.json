@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tododone/static/css/main.73149ef6.css",
+    "main.js": "/tododone/static/js/main.d024f088.js",
+    "static/js/453.9e1b30b6.chunk.js": "/tododone/static/js/453.9e1b30b6.chunk.js",
+    "index.html": "/tododone/index.html",
+    "main.73149ef6.css.map": "/tododone/static/css/main.73149ef6.css.map",
+    "main.d024f088.js.map": "/tododone/static/js/main.d024f088.js.map",
+    "453.9e1b30b6.chunk.js.map": "/tododone/static/js/453.9e1b30b6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73149ef6.css",
+    "static/js/main.d024f088.js"
+  ]
+}
