@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 .App {
   text-align: center;
   background-color: #eeeeff;
@@ -14,7 +16,8 @@
 }
 
 .title {
-  color: #aaaaff;
+  font-family: "Permanent Marker", cursive;
+  color: #6969ff;
 }
 
 button {
@@ -91,10 +94,16 @@ li {
 }
 
 .list {
-  border: 1px solid grey;
+  border: 5px solid grey;
   border-radius: 1rem;
+  border-style: outset;
   padding: 1rem;
   height: 100%;
   overflow: auto;
   background-color: #f7f7ff;
+}
+
+.list h2 {
+  font-family: "Permanent Marker", cursive;
+  color: #aaaaff;
 }
