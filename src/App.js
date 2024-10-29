@@ -1,7 +1,7 @@
 import "./App.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { add } from "./functions/add";
 import List from "./components/List";
 import { remove } from "./functions/remove";
@@ -11,20 +11,32 @@ function App() {
   const [toDoInput, setToDoInput] = useState("");
   const [toDoList, setToDoList] = useState([]);
 
+  useEffect(() => {
+    const storedToDos = localStorage.getItem("TO_DO_LIST");
+
+    if (storedToDos) {
+      const list = JSON.parse(storedToDos);
+      setToDoList(list);
+    }
+  }, []);
+
   const handleAdd = () => {
     const newList = add(toDoInput, toDoList);
     setToDoList(newList);
+    localStorage.setItem("TO_DO_LIST", JSON.stringify(newList));
     setToDoInput("");
   };
 
   const handleRemove = (item) => {
     const newList = remove(item, toDoList);
     setToDoList(newList);
+    localStorage.setItem("TO_DO_LIST", JSON.stringify(newList));
   };
 
   const handleComplete = (item) => {
     const newList = complete(item, toDoList);
     setToDoList(newList);
+    localStorage.setItem("TO_DO_LIST", JSON.stringify(newList));
   };
 
   return (
@@ -47,7 +59,7 @@ function App() {
           />
         </div>
         <div className="lists">
-          <div className="list">
+          <div data-testid="toDo" className="list">
             <h2>To Do</h2>
             <List
               listItems={toDoList.filter((todo) => !todo.isCompleted)}
@@ -55,7 +67,7 @@ function App() {
               handleComplete={handleComplete}
             />
           </div>
-          <div className="list">
+          <div data-testid="done" className="list">
             <h2>Done</h2>
             <List
               listItems={toDoList.filter((todo) => todo.isCompleted)}
