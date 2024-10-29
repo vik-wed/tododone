@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import List from "./list";
+import List from "../../../components/List";
 
 describe("List component", () => {
   const mockListItems = [

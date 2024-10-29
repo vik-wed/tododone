@@ -1,4 +1,4 @@
-import Button from "../button/button";
+import Button from "./Button";
 
 export default function List({ listItems, handleRemove, handleComplete }) {
   return (

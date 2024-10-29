@@ -1,4 +1,4 @@
-const { add } = require("./add");
+import { add } from "../../../functions/add";
 
 describe("Add to to-do list", () => {
   test("it adds an item to the list", () => {

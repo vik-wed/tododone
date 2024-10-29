@@ -1,11 +1,11 @@
 import "./App.css";
-import Input from "./components/input/input";
-import Button from "./components/button/button";
+import Input from "./components/Input";
+import Button from "./components/Button";
 import { useState } from "react";
-import { add } from "./functions/addToList/add";
-import List from "./components/list/list";
-import { remove } from "./functions/removeFromList/remove";
-import { complete } from "./functions/completeToDo/complete";
+import { add } from "./functions/add";
+import List from "./components/List";
+import { remove } from "./functions/remove";
+import { complete } from "./functions/complete";
 
 function App() {
   const [toDoInput, setToDoInput] = useState("");

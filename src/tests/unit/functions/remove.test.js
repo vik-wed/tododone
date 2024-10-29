@@ -1,4 +1,4 @@
-const { remove } = require("./remove");
+import { remove } from "../../../functions/remove";
 
 describe("Remove from to-do list", () => {
   test("it removes an item from the list", () => {

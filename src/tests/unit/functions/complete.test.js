@@ -1,4 +1,4 @@
-const { complete } = require("./complete");
+import { complete } from "../../../functions/complete";
 
 describe("complete function", () => {
   test("it marks an item in the list as complete", () => {
