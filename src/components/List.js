@@ -7,6 +7,7 @@ export default function List({ listItems, handleRemove, handleComplete }) {
         <li key={listItem}>
           {handleComplete !== undefined ? (
             <Button
+              testingId={"complete-button"}
               isDisabled={false}
               buttonText={"✔"}
               variant={"complete-variant"}
@@ -14,6 +15,7 @@ export default function List({ listItems, handleRemove, handleComplete }) {
             />
           ) : null}
           <Button
+            testingId={"remove-button"}
             isDisabled={false}
             buttonText={"×"}
             variant={"delete-variant"}

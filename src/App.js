@@ -59,11 +59,13 @@ function App() {
           </header>
           <div className="add-section">
             <Input
+              testingId={"input-todo"}
               type="text"
               value={toDoInput}
               onChange={(e) => setToDoInput(e.target.value)}
             />
             <Button
+              testingId={"button-add"}
               buttonText={"+"}
               variant={"add-variant"}
               isDisabled={toDoInput.length === 0}
