@@ -1,21 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
-body {
+* {
   margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
 .App {
   text-align: center;
   background-color: #eeeeff;
+  overflow: hidden;
   height: 100dvh;
-  overflow: auto;
+  @media (max-width: 1000px) {
+    overflow: auto;
+  }
+}
+
+#break-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
   font-size: 1.5rem;
+  padding: 1rem;
 }
 
 .title {
@@ -23,17 +35,32 @@ body {
   color: #6969ff;
 }
 
-button {
-  cursor: pointer;
-  border: 0;
-  border-radius: 20%;
-  font-size: 1rem;
+.add-section {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  margin: auto;
+  width: 20%;
 }
 
 input {
+  padding: 0.4rem 0.2rem;
   border: 1px solid grey;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+button {
+  font-family: "Permanent Marker";
+  cursor: pointer;
+  padding: 0 0.6rem;
+  border: 0;
+  border-radius: 20%;
+  font-size: 1.3rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-variant {
@@ -42,7 +69,16 @@ input {
 }
 
 .complete-variant {
+  padding: 0.36rem 0.5rem;
   font-size: 0.85rem;
+  color: white;
+  background-color: #755bf5;
+}
+
+.party-variant {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 3rem;
   color: white;
   background-color: #755bf5;
 }
@@ -57,13 +93,12 @@ button:disabled {
   opacity: 50%;
 }
 
-.button-alt {
-  display: none;
-}
-
 ul {
   display: grid;
   grid-gap: 1rem;
+  @media (max-width: 1000px) {
+    padding: 1rem;
+  }
 }
 
 li {
@@ -77,14 +112,6 @@ li {
   overflow: hidden;
 }
 
-.add-section {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  margin: auto;
-  width: 20%;
-}
-
 .lists {
   display: grid;
   padding: 2rem;
@@ -92,6 +119,7 @@ li {
   grid-template-columns: 1fr 1fr;
   height: 70vh;
   @media (max-width: 1000px) {
+    padding: 1rem;
     grid-template-columns: unset;
     height: unset;
   }
@@ -105,9 +133,55 @@ li {
   height: 100%;
   overflow: auto;
   background-color: #f7f7ff;
+  @media (max-width: 1000px) {
+    padding: 0.5rem 0rem;
+  }
 }
 
 .list h2 {
   font-family: "Permanent Marker", cursive;
   color: #aaaaff;
+  font-size: 1.9rem;
+  padding-bottom: 0.2rem;
+}
+
+@keyframes scaleCup {
+  0% {
+    transform: scale(0.6);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes confettiRain {
+  0% {
+    opacity: 1;
+    margin-top: -100vh;
+    margin-left: -200px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 100vh;
+    margin-left: 200px;
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 1rem;
+  height: 1.5rem;
+  animation: confettiRain 5s infinite;
+}
+
+#confetti-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
 }

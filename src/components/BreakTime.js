@@ -48,7 +48,7 @@ export default function BreakTime({ handleBreakOver }) {
       <Button
         buttonText={"Back to Work"}
         onClick={handleBreakOver}
-        variant={"complete-variant"}
+        variant={"party-variant"}
       />
       <div id="confetti-wrapper"></div>
     </div>

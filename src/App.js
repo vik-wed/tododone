@@ -6,8 +6,10 @@ import { add } from "./functions/add";
 import List from "./components/List";
 import { remove } from "./functions/remove";
 import { complete } from "./functions/complete";
+import BreakTime from "./components/BreakTime";
 
 function App() {
+  const [isBreakTime, setIsBreakTime] = useState(false);
   const [toDoInput, setToDoInput] = useState("");
   const [toDoList, setToDoList] = useState([]);
 
@@ -19,6 +21,13 @@ function App() {
       setToDoList(list);
     }
   }, []);
+
+  useEffect(() => {
+    const allCompleted = toDoList.filter((todo) => todo.isCompleted);
+    if (toDoList.length > 0 && toDoList.length === allCompleted.length) {
+      setIsBreakTime(true);
+    }
+  }, [toDoList]);
 
   const handleAdd = () => {
     const newList = add(toDoInput, toDoList);
@@ -41,41 +50,45 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="title">To Do - Done</h1>
-      </header>
-      <main>
-        <div className="add-section">
-          <Input
-            type="text"
-            value={toDoInput}
-            onChange={(e) => setToDoInput(e.target.value)}
-          />
-          <Button
-            buttonText={"+"}
-            variant={"add-variant"}
-            isDisabled={toDoInput.length === 0}
-            onClick={handleAdd}
-          />
-        </div>
-        <div className="lists">
-          <div data-testid="toDo" className="list">
-            <h2>To Do</h2>
-            <List
-              listItems={toDoList.filter((todo) => !todo.isCompleted)}
-              handleRemove={handleRemove}
-              handleComplete={handleComplete}
+      {isBreakTime ? (
+        <BreakTime handleBreakOver={() => setIsBreakTime(false)} />
+      ) : (
+        <main>
+          <header className="App-header">
+            <h1 className="title">To Do - Done</h1>
+          </header>
+          <div className="add-section">
+            <Input
+              type="text"
+              value={toDoInput}
+              onChange={(e) => setToDoInput(e.target.value)}
+            />
+            <Button
+              buttonText={"+"}
+              variant={"add-variant"}
+              isDisabled={toDoInput.length === 0}
+              onClick={handleAdd}
             />
           </div>
-          <div data-testid="done" className="list">
-            <h2>Done</h2>
-            <List
-              listItems={toDoList.filter((todo) => todo.isCompleted)}
-              handleRemove={handleRemove}
-            />
+          <div className="lists">
+            <div data-testid="toDo" className="list">
+              <h2>To Do</h2>
+              <List
+                listItems={toDoList.filter((todo) => !todo.isCompleted)}
+                handleRemove={handleRemove}
+                handleComplete={handleComplete}
+              />
+            </div>
+            <div data-testid="done" className="list">
+              <h2>Done</h2>
+              <List
+                listItems={toDoList.filter((todo) => todo.isCompleted)}
+                handleRemove={handleRemove}
+              />
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      )}
     </div>
   );
 }
