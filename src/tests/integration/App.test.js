@@ -46,19 +46,22 @@ describe("App integration test", () => {
 
     fireEvent.change(input, { target: { value: "Complete Task" } });
     fireEvent.click(addButton);
+    fireEvent.change(input, { target: { value: "Incomplete Task" } });
+    fireEvent.click(addButton);
 
     const toDoList = screen.getByTestId("toDo");
     const doneList = screen.getByTestId("done");
 
     expect(within(toDoList).getByText("Complete Task")).toBeInTheDocument();
 
-    const completeButton = screen.getByRole("button", { name: "✔" });
-    fireEvent.click(completeButton);
+    const completeButton = screen.getAllByRole("button", { name: "✔" });
+    fireEvent.click(completeButton[0]);
 
     expect(within(doneList).getByText("Complete Task")).toBeInTheDocument();
     expect(
       within(toDoList).queryByText("Complete Task")
     ).not.toBeInTheDocument();
+    expect(within(toDoList).queryByText("Incomplete Task")).toBeInTheDocument();
   });
   test("updates the list in localStorage when a task is marked as completed", () => {
     render(<App />);
@@ -101,5 +104,24 @@ describe("App integration test", () => {
     const storedList = JSON.parse(localStorage.getItem("TO_DO_LIST"));
 
     expect(storedList).toEqual([]);
+  });
+  test("if all items completed renders confetti", () => {
+    render(<App />);
+
+    const input = screen.getByRole("textbox");
+    const addButton = screen.getByRole("button", { name: "+" });
+
+    fireEvent.change(input, { target: { value: "Complete Task" } });
+    fireEvent.click(addButton);
+
+    const toDoList = screen.getByTestId("toDo");
+
+    expect(within(toDoList).getByText("Complete Task")).toBeInTheDocument();
+
+    const completeButton = screen.getByRole("button", { name: "✔" });
+    fireEvent.click(completeButton);
+
+    const confetti = screen.getByTestId("confetti");
+    expect(confetti).toBeInTheDocument();
   });
 });

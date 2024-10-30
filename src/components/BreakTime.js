@@ -44,7 +44,7 @@ export default function BreakTime({ handleBreakOver }) {
   }, []);
 
   return (
-    <div id="break-time">
+    <div data-testid="confetti" id="break-time">
       <Button
         buttonText={"Back to Work"}
         onClick={handleBreakOver}
